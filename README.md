@@ -8,8 +8,6 @@ This repository provides a comprehensive Docker Compose setup for deploying Mint
 
 - **Configuration Options:** Customize your MintHCM installation by adjusting variables in the `.env` file. Modify parameters such as the web port, database details, and MintHCM admin credentials.
 
-- **Efficient Dependencies:** Ensure proper startup sequence with dependencies managed between containers. The web application depends on the MySQL database and waits for it to become healthy before proceeding.
-
 **Instructions:**
 
 1. Clone this repository to your local machine:

@@ -1,0 +1,47 @@
+version: '3'
+services:
+  minthcm-web:
+    container_name: minthcm-web
+    image: minthcm/minthcm:280723
+    ports:
+      - '${WEB_PORT}:80'
+    expose:
+      - '80'
+    hostname: minthcm-www
+    restart: always
+    depends_on:
+            minthcm-db:
+                    condition: service_healthy
+    tty: true
+    stdin_open: true
+    env_file:
+      - .env
+    volumes:
+      - minthcm_www:/var/www/html
+      - minthcm_cron:/var/spool/cron/crontabs
+    networks:
+      minthcm:
+  minthcm-db:
+    image: percona:5.7
+    container_name: minthcm-db
+    restart: always
+    networks:
+      minthcm:
+    environment:
+      MYSQL_ROOT_PASSWORD: '${MYSQL_PASSWORD}'
+    volumes:
+      - minthcm_db:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+
+volumes:
+  minthcm_db:
+  minthcm_www:
+  minthcm_cron:
+
+networks:
+  minthcm:

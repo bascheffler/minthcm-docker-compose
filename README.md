@@ -26,7 +26,7 @@ docker compose up -d
 4. Monitor Progress:
 
 5. Access MintHCM:
-- Open your web browser and access MintHCM at `http://localhost:8080` or the configured IP and port.
+- Open your web browser and access MintHCM at `http://localhost` or the configured IP and port.
 
 6. Configuration Changes:
 - If you wish to make changes to the `.env` file, create a fresh environment to ensure MintHCM is installed with the new parameters.

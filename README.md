@@ -4,7 +4,7 @@ This repository provides a comprehensive Docker Compose setup for deploying Mint
 
 **Features:**
 
-- **Containerized Deployment:** Deploy MintHCM effortlessly using Docker Compose. The setup includes both the MintHCM web application and a MySQL database container.
+- **Containerized Deployment:** Deploy MintHCM effortlessly using Docker Compose.
 
 - **Configuration Options:** Customize your MintHCM installation by adjusting variables in the `.env` file. Modify parameters such as the web port, database details, and MintHCM admin credentials.
 
@@ -17,14 +17,16 @@ cd minthcm-docker-compose
 ```
 
 2. Customize Settings:
-- Edit the `.env` file to tailor parameters such as ports, database credentials, and admin details.
+- Edit the `.env` file to tailor parameters.
 
 3. Launch MintHCM:
 ```
 docker compose up -d
 ```
 4. Monitor Progress:
-
+```
+docker logs --follow <name_of_minthcm-web_container>
+```
 5. Access MintHCM:
 - Open your web browser and access MintHCM at `http://localhost` or the configured IP and port.
 
